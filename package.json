@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
     "@types/node": "18.15.11",
     "@types/react": "18.0.31",
     "@types/react-dom": "18.0.11",
@@ -16,7 +17,6 @@
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
     "next": "13.2.4",
-    "payload": "^1.6.29",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^8.3.0",
     "react": "18.2.0",

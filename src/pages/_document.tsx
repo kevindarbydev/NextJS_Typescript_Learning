@@ -4,7 +4,10 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body>
+    <body style={{
+        background: "linear-gradient(45deg, #000F00, #808080, #ddffdd, #2F2F2F)",
+        minHeight: "100vh"
+      }}>
         <Main />
         <NextScript />
       </body>

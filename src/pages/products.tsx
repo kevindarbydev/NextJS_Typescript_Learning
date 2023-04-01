@@ -1,38 +1,61 @@
-import { GetStaticProps } from 'next';
-
-type Product = {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-};
+import { NextPage } from 'next';
+import Products from '../components/Products';
+import Layout from '../components/Layout';
+import { Product } from '../types';
 
 type Props = {
   products: Product[];
 };
 
-const Products = ({ products }: Props) => {
+const ProductPage: NextPage<Props> = ({ products }) => {
   return (
-    <div>
-      <h1>Products</h1>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <p>${product.price.toFixed(2)}</p>
-          </li>
-        ))}
-      </ul>
+     <Layout>
+    <div className='text-center'>
+      <Products products={products} />
     </div>
+    </Layout>
   );
 };
 
-export default Products;
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const res = await fetch('https://my-api.com/products');
-  const products = await res.json();
+export const getStaticProps = async () => {
+  const products: Product[] = [
+    {
+      id: 1,
+      name: 'Product 1',
+      description: 'This is the description for product 1.',
+      price: 9.99,
+    },
+    {
+      id: 2,
+      name: 'Product 2',
+      description: 'This is the description for product 2.',
+      price: 19.99,
+    },
+      {
+      id: 3,
+      name: 'Product 3',
+      description: 'This is the description for product 2.',
+      price: 19.99,
+    },
+      {
+      id: 4,
+      name: 'Product 4',
+      description: 'This is the description for product 2.',
+      price: 19.99,
+    },
+      {
+      id: 5,
+      name: 'Product 5',
+      description: 'This is the description for product 2.',
+      price: 19.99,
+    },
+      {
+      id: 6,
+      name: 'Product 6',
+      description: 'This is the description for product 2.',
+      price: 19.99,
+    },
+  ];
 
   return {
     props: {
@@ -40,3 +63,5 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     },
   };
 };
+
+export default ProductPage;
