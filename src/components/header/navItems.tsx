@@ -14,6 +14,16 @@ const NavItems: React.FC<Props> = ({ margin }) => {
     Products
   </div>
 </Link>
+<Link href="/CombatCalc">
+  <div className='border rounded-md py-1 px-3 cursor-pointer hover:bg-gray-100' style={{ marginRight: margin }}>
+        Combat Lvl Calculator
+      </div>
+      </Link>
+      <Link href="/Lookup">
+  <div className='border rounded-md py-1 px-3 cursor-pointer hover:bg-gray-100' style={{ marginRight: margin }}>
+        Get HiScores
+      </div>
+      </Link>
 
       <div className='border rounded-md py-1 px-3 cursor-pointer hover:bg-gray-100' style={{ marginRight: margin }}>
         Login
