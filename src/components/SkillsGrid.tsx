@@ -1,6 +1,7 @@
 import { Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Image from 'next/image';
+import ProgressBar from './ProgressBar';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -32,7 +33,7 @@ const SkillsGrid = ({ skillsData }: Props) => {
     <Grid container spacing={1} style={{ width: '65%', marginLeft:'1rem' }}>
 
       {Object.entries(skillsData).map(([skillName, skillData]) => (
-        <Grid item xs={12} sm={2} key={skillName}>
+        <Grid item xs={12} md={2} key={skillName}>
           <Paper className={classes.paper}>
         {skillName !== 'overall' && (
         <Image
@@ -47,6 +48,7 @@ const SkillsGrid = ({ skillsData }: Props) => {
             <Typography variant="subtitle1">Rank: {skillData.rank}</Typography>
             <Typography variant="subtitle1">Level: {skillData.level}</Typography>
             <Typography variant="subtitle1">XP: {skillData.xp}</Typography>
+            <ProgressBar xp={skillData.xp} level={skillData.level} />
           </Paper>
         </Grid>
       ))}
