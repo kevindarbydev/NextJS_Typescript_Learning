@@ -6,9 +6,13 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: 'right',
-    color: theme.palette.text.secondary,
-    width:'240px',
+    backgroundColor: 'lightgrey',
+    width:'200px',
   },
+  img:{
+    float: 'left',
+    marginTop:'2rem',
+  }
  
 }));
 
@@ -23,14 +27,12 @@ interface Props {
 }
 const SkillsGrid = ({ skillsData }: Props) => {
   const classes = useStyles();
-
-  const getSkillIconPath = (skillName: string) => {
-    return `${process.env.PUBLIC_URL}/skill-icons/${skillName}_icon.png`;
-  };
+// 
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={1} style={{ width: '65%', marginLeft:'1rem' }}>
+
       {Object.entries(skillsData).map(([skillName, skillData]) => (
-        <Grid item xs={12} sm={3} key={skillName}>
+        <Grid item xs={12} sm={2} key={skillName}>
           <Paper className={classes.paper}>
         {skillName !== 'overall' && (
         <Image
@@ -38,6 +40,7 @@ const SkillsGrid = ({ skillsData }: Props) => {
           alt={`${skillName} icon`}
           width={50}
           height={80}
+          className={classes.img}
         />
       )}
             <Typography variant="h6">{skillName}</Typography>
@@ -47,6 +50,7 @@ const SkillsGrid = ({ skillsData }: Props) => {
           </Paper>
         </Grid>
       ))}
+   
     </Grid>
   );
 };
