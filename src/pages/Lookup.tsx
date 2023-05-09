@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { NextPage } from 'next';
 import { TextField, Button, Grid, Typography } from '@material-ui/core';
 import Layout from '@/components/Layout';
@@ -22,7 +22,7 @@ const Lookup: NextPage<Props> = () => {
      const [bossKc, setBossKc] = useState(null);
 
 
-     const handleSubmit = async (e) => {
+     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
      }
    const handleLookup = async () => {
