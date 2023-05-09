@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'right',
     backgroundColor: 'lightgrey',
     width:'170px',
+    height: '220px',
   },
   img:{
     float: 'left',
@@ -46,15 +47,15 @@ const SkillCard = ({ skill }: Props) => {
                 <Typography variant="h6">{skill.name}</Typography>
                 <Typography variant="subtitle1">Rank: {skill.data.rank}</Typography>
                 <Typography variant="subtitle1">Level: {skill.data.level}</Typography>
-                <Typography variant="subtitle1">XP: {skill.data.xp}</Typography>
-                <ProgressBar xp={skill.data.xp} level={skill.data.level} />
+                <Typography variant="subtitle1" >XP: {skill.data.xp}</Typography>
+                <ProgressBar className="" xp={skill.data.xp} level={skill.data.level} />
               </Paper>
             ) : (
                 <Paper className={classes.paper}>                
                 <Typography variant="h6">{skill.name}</Typography>
                 <Typography variant="subtitle1">Rank: {skill.data.rank}</Typography>
                 <Typography variant="subtitle1">Level: {skill.data.level}</Typography>
-                <Typography variant="subtitle1">XP: {skill.data.xp}</Typography>
+                <Typography variant="subtitle1" className='mb-6'>XP: {skill.data.xp}</Typography>
               </Paper>
             )}
           </Grid>     

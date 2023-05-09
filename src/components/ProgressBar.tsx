@@ -30,15 +30,15 @@ const progressBarValue = level === 99 ? 100 : 100 - (xpToNextLevel / (xpTNL[xpTN
   return (
     <div className={classes.root}>
      
-     <span style={{ height: '42px', display: 'block' }}>
+     <span style={{ height: '42px', display: 'block', textAlign:'center' }}>
       { level < 99 ? (
-        <>
-        <Typography variant="subtitle1">{xpToNextLevel} XP to level {level + 1}</Typography>
-          <LinearProgress variant="determinate" value={progressBarValue} />
+        <>     
+        <Typography variant="subtitle1" style={{fontSize:'15px', marginTop:'1.5rem'}}>{xpToNextLevel} XP to {level + 1}</Typography>
+          <LinearProgress variant="determinate"  value={progressBarValue} />
            <Typography variant="subtitle1" className='opacity-50 text-center text-sm'>{parseInt(progressBarValue.toFixed(0))}%</Typography>
           </>
       ) : (
-        <div style={{ visibility: 'hidden' }}></div>
+        <Typography variant='subtitle1' style={{marginTop:'1.76rem'}}>Level 99! 🎉 </Typography>
       )}
     </span>
      
