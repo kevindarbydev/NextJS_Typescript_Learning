@@ -48,7 +48,7 @@ const SkillCard = ({ skill }: Props) => {
                 <Typography variant="subtitle1">Rank: {skill.data.rank}</Typography>
                 <Typography variant="subtitle1">Level: {skill.data.level}</Typography>
                 <Typography variant="subtitle1" >XP: {skill.data.xp}</Typography>
-                <ProgressBar className="" xp={skill.data.xp} level={skill.data.level} />
+                <ProgressBar xp={skill.data.xp} level={skill.data.level} />
               </Paper>
             ) : (
                 <Paper className={classes.paper}>                
