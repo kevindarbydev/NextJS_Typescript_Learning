@@ -29,11 +29,21 @@ const ProgressBar = ({ xp, level }: Props) => {
 const progressBarValue = level === 99 ? 100 : 100 - (xpToNextLevel / (xpTNL[xpTNLIndex] - xpTNL[xpTNLIndex - 1])) * 100;
   return (
     <div className={classes.root}>
-       
-      <Typography variant="subtitle1">{xpToNextLevel} XP to level {level + 1}</Typography>
      
-      <LinearProgress variant="determinate" value={progressBarValue} />
-       <Typography variant="subtitle1" className='opacity-50 text-center'>{parseInt(progressBarValue.toFixed(0))}%</Typography>
+     <span style={{ height: '42px', display: 'block' }}>
+      { level < 99 ? (
+        <>
+        <Typography variant="subtitle1">{xpToNextLevel} XP to level {level + 1}</Typography>
+          <LinearProgress variant="determinate" value={progressBarValue} />
+           <Typography variant="subtitle1" className='opacity-50 text-center text-sm'>{parseInt(progressBarValue.toFixed(0))}%</Typography>
+          </>
+      ) : (
+        <div style={{ visibility: 'hidden' }}></div>
+      )}
+    </span>
+     
+     
+      
     </div>
   );
 };

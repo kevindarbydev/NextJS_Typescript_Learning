@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next';
-import { TextField, Button, Grid } from '@material-ui/core';
+import { TextField, Button, Grid, Typography } from '@material-ui/core';
 import Layout from '@/components/Layout';
 import SkillsGrid from '@/components/SkillsGrid';
 import BossGrid from '@/components/BossGrid';
@@ -21,6 +21,10 @@ const Lookup: NextPage<Props> = () => {
      const [playerData, setPlayerData] = useState(null);
      const [bossKc, setBossKc] = useState(null);
 
+
+     const handleSubmit = async (e) => {
+        e.preventDefault();
+     }
    const handleLookup = async () => {
     try {
       const response = await fetch(`/api/hiscores?rsn=${rsn}`);
@@ -51,23 +55,23 @@ const Lookup: NextPage<Props> = () => {
   return (
     <>
       <Layout>
-        <div className='flex flex-col items-center'>      
-        <h1>Enter your RSN below</h1>  
+        <div className='flex flex-col items-center mt-2'>      
+        <Typography>Enter your RSN below</Typography>  
+        <form onSubmit={(e) => handleSubmit(e)}>
           <TextField
           id='outlined-basic'
           label='RSN'
           variant='outlined'
-          style={{ width: '180px', margin: '1rem 0' }}
+          style={{ width: '180px', margin: '1rem 0', display:'flex' }}
           value={rsn}
           onChange={(event) => setRsn(event.target.value)}
         />
-        <Button variant="contained" value="Lookup" className="mb-4" style={{marginBottom:'2rem'}} onClick={handleLookup}>Lookup stats </Button>
+        <Button variant="contained" onClick={handleLookup} type='submit'>Lookup stats </Button>
+        </form>
       <div className='w-full flex'>
             {playerData && (
               <>
-                <SkillsGrid skillsData={playerData} />
-                <Grid style={{ width: '5%' }}/>
-                {/* <BossGrid bossData={bossKc} /> */}
+                <SkillsGrid skillsData={playerData} />            
               </>
             )}
         </div>
