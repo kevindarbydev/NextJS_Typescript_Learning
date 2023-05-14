@@ -24,10 +24,11 @@ const NavItems: React.FC<Props> = ({ margin }) => {
         Get HiScores
       </div>
       </Link>
-
+    <Link href="/Upload">
       <div className='border rounded-md py-1 px-3 cursor-pointer hover:bg-gray-100' style={{ marginRight: margin }}>
         Login
       </div>
+      </Link>
     </>
   );
 };

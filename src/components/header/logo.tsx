@@ -14,7 +14,7 @@ const Logo: React.FC<Props> = ({title}) => {
         width={120}
         height={120}
       />
-      <h1 className="underline text-3xl ml-8">{title}</h1>
+      <h1 className="underline text-3xl ml-8">XP Gains Tracker</h1>
     </div>
     );
 };
