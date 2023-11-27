@@ -26,12 +26,8 @@ const Lookup: NextPage<Props> = () => {
       const response = await fetch(`/api/leagues?rsn=${rsn}`);
       const data = await response.json();
       
-      if (!data.main){
-        console.log("Response failed!");
-        return;
-      }
-      console.log(data);
-      setPlayerData(data.main.skills);   
+     
+      await console.dir(data.rank+ ", " + data.score);
     } catch (error) {
       console.error(error);
     }

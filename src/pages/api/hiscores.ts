@@ -8,13 +8,11 @@ export default async function handler(
   try {
 
     var { rsn } = req.query;
-    var stringifyd = `${rsn}`;
-    
-   
-    const stats = await hiscores.getStats("Lynx Titan");
-    if (stats.main){
-    res.status(200).json(stats);
+   const stats = await fetch(`http://localhost:3030/stats/${rsn}`)
+    if (stats){
+        res.status(200).send(stats);
     }
+    
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error retrieving player stats, ' + error });

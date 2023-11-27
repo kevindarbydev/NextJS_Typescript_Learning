@@ -24,34 +24,20 @@ const Lookup: NextPage<Props> = () => {
      }
    const handleLookup = async () => {
     try {
-      const response = await fetch(`/api/hiscores`);
+      const response = await fetch(`/api/hiscores?rsn=${rsn}`);
       const data = await response.json();
-       console.log(data);
-      if (!data.main){
+      
+      if (!data){
         console.log("Response failed!");
         return;
       }
-     
-      setPlayerData(data.main.skills);
-      setBossKc(data.main.bosses)
+      console.log(data.overall);
+      //setPlayerData(data.main.skills);      
 
-      // Save the playerData to localStorage
-      const trackedPlayers = JSON.parse(localStorage.getItem('trackedPlayers') || '{}');
-      trackedPlayers[rsn] = trackedPlayers[rsn] || [];
-      trackedPlayers[rsn].push(data.main.skills);
-      localStorage.setItem('trackedPlayers', JSON.stringify(trackedPlayers));
     } catch (error) {
       console.error(error);
     }
   };
-    // Retrieve the playerData from localStorage when the component mounts
-  useEffect(() => {
-    const trackedPlayers = JSON.parse(localStorage.getItem('trackedPlayers') || '{}');
-    const playerData = trackedPlayers[rsn];
-    if (playerData && playerData.length > 0) {
-      setPlayerData(playerData[playerData.length - 1]);
-    }
-  }, []);
 
   return (
     <>

@@ -8,9 +8,9 @@ export default async function handler(
   try {
     const { rsn } = req.query;
    
-    const stats = await hiscores.getStatsByGamemode(rsn as string, 'seasonal');
-    if (stats){
-    res.status(200).json(stats);
+    const leaguePoints = await fetch(`http://localhost:3030/leaguePoints/${rsn}`)
+    if (leaguePoints){
+        res.status(200).send(leaguePoints);
     }
   } catch (error) {
     console.error(error);
