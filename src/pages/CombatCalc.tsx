@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NextPage } from 'next';
 import Layout from '@/components/Layout';
-import { Button } from '@material-ui/core';
+import { Button, Input, Typography, InputLabel } from '@material-ui/core';
 import CombatLevel from '@/components/CombatLevel';
 import Router from 'next/router';
 
@@ -54,80 +54,82 @@ const CombatCalc: NextPage<Props> = () => {
     <>
       <Layout>
         <div className='flex flex-col text-center'>        
-          <h2 className='text-2xl underline text-green-600 mb-5'>Enter info below</h2>
-  <form onSubmit={handleSubmit}>
-            <label htmlFor='hitpoints'>
+          <h2 className='text-2xl underline text-green-600 my-5'>Enter info below</h2>
+  <form onSubmit={handleSubmit} >
+            <InputLabel htmlFor='hitpoints'>
               Hitpoints:
-              <input
+              <Input
                 type='number'
                 name='hitpoints'
                 id='hitpoints'
                 value={hitpoints}
                 onChange={(e) => setHitpoints(parseInt(e.target.value))}
               />
-            </label>
-            <label htmlFor='defence'>
+            </InputLabel>
+            <InputLabel htmlFor='defence'>
               Defence:
-              <input
+              <Input
                 type='number'
                 name='defence'
                 id='defence'
                 value={defence}
                 onChange={(e) => setDefence(parseInt(e.target.value))}
               />
-            </label>
-            <label htmlFor='attack'>
+            </InputLabel>
+            <InputLabel htmlFor='attack'>
               Attack:
-              <input
+              <Input
                 type='number'
                 name='attack'
                 id='attack'
                 value={attack}
                 onChange={(e) => setAttack(parseInt(e.target.value))}
               />
-            </label>
-            <label htmlFor='strength'>
+            </InputLabel>
+            <InputLabel htmlFor='strength'>
               Strength:
-              <input
+              <Input
                 type='number'
                 name='strength'
                 id='strength'
                 value={strength}
                 onChange={(e) => setStrength(parseInt(e.target.value))}
               />
-            </label>
-            <label htmlFor='prayer'>
+            </InputLabel>
+            <InputLabel htmlFor='prayer'>
               Prayer:
-              <input
+              <Input
                 type='number'
                 name='prayer'
                 id='prayer'
                 value={prayer}
                 onChange={(e) => setPrayer(parseInt(e.target.value))}
               />
-            </label>
-             <label htmlFor='ranged'>
+            </InputLabel>
+             <InputLabel htmlFor='ranged'>
               Ranged:
-              <input
+              <Input
                 type='number'
                 name='ranged'
                 id='ranged'
                 value={ranged}
                 onChange={(e) => setRanged(parseInt(e.target.value))}
               />
-            </label>
-             <label htmlFor='magic' className='mb-10'>
+            </InputLabel>
+             <InputLabel htmlFor='magic' className='mb-10'>
               Magic:
-              <input
+              <Input
                 type='number'
                 name='magic'
                 id='magic'
                 value={magic}
                 onChange={(e) => setMagic(parseInt(e.target.value))}
               />
-            </label>
-            <button type='submit'>Calculate Combat Level</button>
-            {errorMessage && <p>{errorMessage}</p>}
+            </InputLabel>
+            <div>
+            <Button variant='outlined' className="w-50" type='submit'>Calculate Combat Level</Button>
+            </div>
+            {errorMessage && <Typography className='mt-2'>{errorMessage}</Typography>}
           </form>   
        <style jsx>{`
             form {

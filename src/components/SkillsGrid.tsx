@@ -16,14 +16,14 @@ interface Props {
 const SkillsGrid = ({ skillsData }: Props) => {
 
   return (
-    <Grid container spacing={1} style={{ width: '55%', marginLeft:'1rem', marginTop:'1.5rem' }}>
+    <Grid container spacing={1} style={{ width: '55%', marginTop:'1.5rem' }}>
 
  {Object.entries(skillsData).map(([skillName, skillData]) => (
   <>
   <SkillCard key={skillName} skill={{ name: skillName, data: skillData }} /> 
   </>
 ))}
-   
+ 
     </Grid>
   );
 };

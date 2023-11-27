@@ -1,6 +1,6 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { NextPage } from 'next';
-import { TextField, Button, Grid, Typography } from '@material-ui/core';
+import { TextField, Button, Grid, Typography, Input } from '@material-ui/core';
 import Layout from '@/components/Layout';
 import SkillsGrid from '@/components/SkillsGrid';
 import BossGrid from '@/components/BossGrid';
@@ -29,8 +29,12 @@ const Lookup: NextPage<Props> = () => {
     try {
       const response = await fetch(`/api/hiscores?rsn=${rsn}`);
       const data = await response.json();
- 
-
+      
+      if (!data.main){
+        console.log("Response failed!");
+        return;
+      }
+      console.log(data);
       setPlayerData(data.main.skills);
       setBossKc(data.main.bosses)
 
@@ -56,7 +60,7 @@ const Lookup: NextPage<Props> = () => {
     <>
       <Layout>
         <div className='flex flex-col items-center mt-2'>      
-        <Typography>Enter your RSN below</Typography>  
+        <Typography variant="h5" className='underline text-blue-600'>Enter your RSN below</Typography>  
         <form onSubmit={(e) => handleSubmit(e)}>
           <TextField
           id='outlined-basic'

@@ -34,7 +34,7 @@ const SkillCard = ({ skill }: Props) => {
 // 
   return (
     <>             
-          <Grid item xs={12} md={2} key={skill.name}>
+          <Grid item xs={4} md={2} key={skill.name}>
             {skill.name !== 'overall' ? (
               <Paper className={classes.paper}>
                 <Image
@@ -45,9 +45,9 @@ const SkillCard = ({ skill }: Props) => {
                   height={44}
                 />
                 <Typography variant="h6">{skill.name}</Typography>
-                <Typography variant="subtitle1">Rank: {skill.data.rank}</Typography>
-                <Typography variant="subtitle1">Level: {skill.data.level}</Typography>
-                <Typography variant="subtitle1" >XP: {skill.data.xp}</Typography>
+                <Typography variant="subtitle1" className='opacity-60'>Rank: <span  className='opacity-100'>{skill.data.rank}</span></Typography>
+                <Typography variant="subtitle1" className='opacity-60'>Level: <span className='opacity-100'>{skill.data.level}</span></Typography>
+                <Typography variant="subtitle1" className='opacity-60' >XP: <span className='opacity-100'>{skill.data.xp}</span></Typography>
                 <ProgressBar xp={skill.data.xp} level={skill.data.level} />
               </Paper>
             ) : (
