@@ -15,8 +15,7 @@ interface Bosses {
 }
 const Lookup: NextPage<Props> = () => {
       const [rsn, setRsn] = useState('');
-     const [playerData, setPlayerData] = useState(null);
-     const [bossKc, setBossKc] = useState(null);
+     const [playerData, setPlayerData] = useState(null);  
 
 
      const handleSubmit = async (e: FormEvent) => {
@@ -24,39 +23,25 @@ const Lookup: NextPage<Props> = () => {
      }
    const handleLookup = async () => {
     try {
-      const response = await fetch(`/api/hiscores`);
+      const response = await fetch(`/api/leagues?rsn=${rsn}`);
       const data = await response.json();
-       console.log(data);
+      
       if (!data.main){
         console.log("Response failed!");
         return;
       }
-     
-      setPlayerData(data.main.skills);
-      setBossKc(data.main.bosses)
-
-      // Save the playerData to localStorage
-      const trackedPlayers = JSON.parse(localStorage.getItem('trackedPlayers') || '{}');
-      trackedPlayers[rsn] = trackedPlayers[rsn] || [];
-      trackedPlayers[rsn].push(data.main.skills);
-      localStorage.setItem('trackedPlayers', JSON.stringify(trackedPlayers));
+      console.log(data);
+      setPlayerData(data.main.skills);   
     } catch (error) {
       console.error(error);
     }
   };
-    // Retrieve the playerData from localStorage when the component mounts
-  useEffect(() => {
-    const trackedPlayers = JSON.parse(localStorage.getItem('trackedPlayers') || '{}');
-    const playerData = trackedPlayers[rsn];
-    if (playerData && playerData.length > 0) {
-      setPlayerData(playerData[playerData.length - 1]);
-    }
-  }, []);
 
   return (
     <>
       <Layout>
-        <div className='flex flex-col items-center mt-2'>      
+        <div className='flex flex-col items-center mt-2'>     
+        
         <Typography variant="h5" className='underline text-blue-600'>Enter your RSN below</Typography>  
         <form onSubmit={(e) => handleSubmit(e)}>
           <TextField

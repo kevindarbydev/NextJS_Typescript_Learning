@@ -1,18 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import hiscores, { getStats } from 'osrs-json-hiscores';
+import hiscores, { getStatsByGamemode } from 'osrs-json-hiscores';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   try {
-
-    var { rsn } = req.query;
-    var stringifyd = `${rsn}`;
-    
+    const { rsn } = req.query;
    
-    const stats = await hiscores.getStats("Lynx Titan");
-    if (stats.main){
+    const stats = await hiscores.getStatsByGamemode(rsn as string, 'seasonal');
+    if (stats){
     res.status(200).json(stats);
     }
   } catch (error) {
